@@ -50,7 +50,7 @@ const props = defineProps({
                                                     :alt="'imagen guitarra' + producto.nombre"
                                                 >
                                             </td>
-                                            <td>SRV</td>
+                                            <td>{{ producto.nombre }}</td>
                                             <td class="fw-bold">
                                                     ${{ producto.precio }}
                                             </td>
@@ -61,7 +61,7 @@ const props = defineProps({
                                                 >
                                                     -
                                                 </button>
-                                                    1
+                                                    {{ producto.cantidad }}
                                                 <button
                                                     type="button"
                                                     class="btn btn-dark"
