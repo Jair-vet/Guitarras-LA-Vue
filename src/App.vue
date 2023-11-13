@@ -15,9 +15,8 @@
     /* state.guitarras = db */   // usando Reactive
   })
 
-  const incrementar = () => {
-    alert('Agrego 1')
-    // numero.value++
+  const agregarCarrito = (guitarra) => {
+    console.log(guitarra);
   }
 
 </script>
@@ -130,7 +129,7 @@
               v-for="guitarra in guitarras"
               :guitarra="guitarra"
               :key="guitarra.key"
-              @incrementar="incrementar"
+              @agregar-carrito="agregarCarrito"
             />
           </div>
       </main>
