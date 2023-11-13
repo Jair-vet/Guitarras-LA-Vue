@@ -41,7 +41,10 @@
     const index = carrito.value.findIndex(producto => producto.id == id)
     if(carrito.value[index].cantidad >= 10) return
     carrito.value[index].cantidad++
+  }
 
+  const eliminarProducto = (id) => {
+    carrito.value = carrito.value.filter(producto => producto.id !== id)
   }
 
 </script>
@@ -67,6 +70,7 @@
       @decrementar-cantidad="decrementarCantidad"
       @incrementar-cantidad="incrementarCantidad"
       @agregar-carrito="agregarCarrito"
+      @eliminar-producto="eliminarProducto"
     />
 
     <main class="container-xl mt-5">
