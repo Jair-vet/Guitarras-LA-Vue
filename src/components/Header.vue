@@ -6,6 +6,8 @@ const props = defineProps({
     }
 })
 
+defineEmits(['decrementar-cantidad', 'incrementar-cantidad'])
+
 
 </script>
 
@@ -58,6 +60,7 @@ const props = defineProps({
                                                 <button
                                                     type="button"
                                                     class="btn btn-dark"
+                                                    @click="$emit('decrementar-cantidad', producto.id)"
                                                 >
                                                     -
                                                 </button>
@@ -65,6 +68,7 @@ const props = defineProps({
                                                 <button
                                                     type="button"
                                                     class="btn btn-dark"
+                                                    @click="$emit('incrementar-cantidad', producto.id)"
                                                 >
                                                     +
                                                 </button>
