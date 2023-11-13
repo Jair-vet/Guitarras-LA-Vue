@@ -11,10 +11,12 @@
 
   const guitarras = ref([])
   const carrito = ref([])
+  const guitarra = ref({})
 
   // Asignar cuando el componente se monta por primera vez
   onMounted(() => {
     guitarras.value = db   // usando Ref
+    guitarra.value = db[3]
     /* state.guitarras = db */   // usando Reactive
   })
 
@@ -61,8 +63,10 @@
 
     <Header 
       :carrito="carrito"
+      :guitarra="guitarra"
       @decrementar-cantidad="decrementarCantidad"
       @incrementar-cantidad="incrementarCantidad"
+      @agregar-carrito="agregarCarrito"
     />
 
     <main class="container-xl mt-5">
