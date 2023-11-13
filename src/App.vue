@@ -1,5 +1,19 @@
 <script setup>
-  const hola = "Hola Mundo"
+  import { ref, reactive, onMounted } from 'vue'
+  import { db } from './data/guitarras'
+
+
+  const state = reactive({
+    guitarras: []
+  })
+
+  const guitarras = ref([])
+
+  // Asignar cuando el componente se monta por primera vez
+  onMounted(() => {
+    guitarras.value = db   // usando Ref
+    state.guitarras = db   // usando Reactive
+  })
 
 </script>
 
