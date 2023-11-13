@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, reactive, onMounted } from 'vue'
+  import { ref, reactive, onMounted, watch } from 'vue'
   import { db } from './data/guitarras'
   import Header from './components/Header.vue'
   import Footer from './components/Footer.vue'
@@ -13,12 +13,29 @@
   const carrito = ref([])
   const guitarra = ref({})
 
+  watch(carrito, () => {
+    guardarLocalStorage()
+  }, {
+    deep: true
+  })
+
+
   // Asignar cuando el componente se monta por primera vez
   onMounted(() => {
+    /* state.guitarras = db */   // usando Reactive
     guitarras.value = db   // usando Ref
     guitarra.value = db[3]
-    /* state.guitarras = db */   // usando Reactive
+
+    const carritoStorage = localStorage.getItem('carrito')
+    if(carritoStorage){
+      carrito.value = JSON.parse(carritoStorage) // Volvemos a convertir a un arreglo y lo agregamos
+    }
   })
+
+
+  const guardarLocalStorage = () => {
+    localStorage.setItem('carrito', JSON.stringify(carrito.value)) // Convertir a string y poderlo almacenar
+  }
 
   const agregarCarrito = (guitarra) => {
     const existeCarrito = carrito.value.findIndex(producto => producto.id == guitarra.id)
