@@ -8,6 +8,7 @@
   // })
 
   const guitarras = ref([])
+  const carrito = ref([])
 
   // Asignar cuando el componente se monta por primera vez
   onMounted(() => {
@@ -16,7 +17,8 @@
   })
 
   const agregarCarrito = (guitarra) => {
-    console.log(guitarra);
+    guitarra.cantidad = 1
+    carrito.value.push(guitarra)  
   }
 
 </script>
