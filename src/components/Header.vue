@@ -7,28 +7,28 @@ const props = defineProps({
 })
 
 
-
 </script>
 
 
 <template>
     <header class="py-5 header">
-          <div class="container-xl">
-              <div class="row justify-content-center justify-content-md-between">
-                  <div class="col-8 col-md-3">
-                      <a href="index.html">
-                          <img class="img-fluid" src="/img/logo.svg" alt="imagen logo">
-                      </a>
-                  </div>
-                  <nav class="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
+        <div class="container-xl">
+            <div class="row justify-content-center justify-content-md-between">
+                <div class="col-8 col-md-3">
+                    <a href="index.html">
+                        <img class="img-fluid" src="/img/logo.svg" alt="imagen logo">
+                    </a>
+                </div>
+                <nav class="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
                       <div 
                           class="carrito"
                       >
-                          <img class="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
+                        <img class="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
 
-                          <div id="carrito" class="bg-white p-3">
-                              <p v-if="carrito.length === 0" class="text-center">El carrito esta vacio</p>
-                                <table v-if="carrito.length > 0" class="w-100 table">
+                        <div id="carrito" class="bg-white p-3">
+                            <p v-if="carrito.length === 0" class="text-center m-0">El carrito esta vacio</p>
+                            <div v-else>
+                                <table class="w-100 table">
                                     <thead>
                                         <tr>
                                             <th>Imagen</th>
@@ -39,13 +39,20 @@ const props = defineProps({
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr 
+                                            v-for="producto in carrito"
+                                            v-bind:key="producto.id"
+                                        >
                                             <td>
-                                                <img class="img-fluid" src="/img/guitarra_02.jpg" alt="imagen guitarra">
+                                                <img 
+                                                    class="img-fluid" 
+                                                    :src="'/img/' + producto.imagen + '.jpg'" 
+                                                    :alt="'imagen guitarra' + producto.nombre"
+                                                >
                                             </td>
                                             <td>SRV</td>
                                             <td class="fw-bold">
-                                                    $299
+                                                    ${{ producto.precio }}
                                             </td>
                                             <td class="flex align-items-start gap-4">
                                                 <button
@@ -73,13 +80,13 @@ const props = defineProps({
                                         </tr>
                                     </tbody>
                                 </table>
-
-                              <p class="text-end">Total pagar: <span class="fw-bold">$899</span></p>
-                              <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
-                          </div>
-                      </div>
-                  </nav>
-              </div><!--.row-->
+                                <p class="text-end">Total pagar: <span class="fw-bold">$899</span></p>
+                                <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div><!--.row-->
 
               <div class="row mt-5">
                   <div class="col-md-6 text-center text-md-start pt-5">
